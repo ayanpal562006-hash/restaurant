@@ -1,0 +1,374 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FoodieHub - Restaurant</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+
+<header class="navbar">
+
+    <div class="logo">
+        🍴 FoodieHub
+    </div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#menu">Menu</a>
+        <a href="#booking">Booking</a>
+        <a href="#payment">Payment</a>
+    </nav>
+
+    <button class="cart-btn" onclick="openCart()">
+        🛒 Cart <span id="cartCount">0</span>
+    </button>
+
+</header>
+
+
+
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <h1>Delicious Food<br>Delivered To You</h1>
+
+        <p>
+            Order your favourite food from our restaurant
+            and enjoy a delicious meal.
+        </p>
+
+        <button onclick="scrollToMenu()">
+            Explore Menu
+        </button>
+
+    </div>
+
+</section>
+
+
+
+
+<section class="restaurant-info">
+
+    <div>
+        <h2>🍽️ FoodieHub Restaurant</h2>
+        <p>⭐⭐⭐⭐⭐ 4.8 (2,500+ Reviews)</p>
+        <p>📍 Kolkata, West Bengal</p>
+    </div>
+
+    <div class="restaurant-time">
+        <strong>🟢 Open Now</strong>
+        <p>10:00 AM - 11:00 PM</p>
+    </div>
+
+</section>
+
+
+
+<section class="menu-section" id="menu">
+
+    <h2>Our Menu</h2>
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search food..."
+            onkeyup="searchFood()"
+        >
+
+    </div>
+
+
+    <div class="categories">
+
+        <button onclick="filterFood('all')">All</button>
+        <button onclick="filterFood('pizza')">🍕 Pizza</button>
+        <button onclick="filterFood('burger')">🍔 Burger</button>
+        <button onclick="filterFood('biryani')">🍚 Biryani</button>
+        <button onclick="filterFood('chinese')">🥡 Chinese</button>
+        <button onclick="filterFood('dessert')">🍰 Dessert</button>
+
+    </div>
+
+
+    <div class="food-container" id="foodContainer"></div>
+
+</section>
+
+
+
+
+<div class="cart-panel" id="cartPanel">
+
+    <div class="cart-header">
+
+        <h2>Your Cart</h2>
+
+        <button onclick="closeCart()">✕</button>
+
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="cart-summary">
+
+        <p>
+            Subtotal:
+            <span>₹<span id="subtotal">0</span></span>
+        </p>
+
+        <p>
+            Delivery:
+            <span>₹<span id="delivery">40</span></span>
+        </p>
+
+        <p>
+            GST:
+            <span>₹<span id="gst">0</span></span>
+        </p>
+
+        <hr>
+
+        <h3>
+            Total:
+            <span>₹<span id="total">0</span></span>
+        </h3>
+
+        <button class="checkout-btn" onclick="goToCheckout()">
+            Proceed to Checkout
+        </button>
+
+    </div>
+
+</div>
+
+
+
+
+<section class="checkout" id="booking">
+
+    <h2>Booking & Checkout</h2>
+
+    <div class="checkout-container">
+
+        <!-- CUSTOMER DETAILS -->
+
+        <div class="checkout-card">
+
+            <h3>Customer Details</h3>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Full Name"
+            >
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Phone Number"
+            >
+
+            <textarea
+                id="address"
+                placeholder="Delivery Address"
+            ></textarea>
+
+            <h3>Booking Type</h3>
+
+            <select id="bookingType">
+
+                <option value="delivery">
+                    Home Delivery
+                </option>
+
+                <option value="pickup">
+                    Restaurant Pickup
+                </option>
+
+                <option value="dinein">
+                    Dine In
+                </option>
+
+            </select>
+
+            <div id="tableBox" class="hidden">
+
+                <input
+                    type="number"
+                    id="tableNumber"
+                    placeholder="Table Number"
+                    min="1"
+                >
+
+            </div>
+
+        </div>
+
+
+        
+
+        <div class="checkout-card" id="payment">
+
+            <h3>Payment Method</h3>
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="upi"
+                    onchange="showPayment('upi')"
+                >
+
+                📱 UPI
+
+            </label>
+
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="card"
+                    onchange="showPayment('card')"
+                >
+
+                💳 Credit / Debit Card
+
+            </label>
+
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="cash"
+                    onchange="showPayment('cash')"
+                >
+
+                💵 Cash on Delivery
+
+            </label>
+
+
+            
+
+            <div id="upiPayment" class="payment-box hidden">
+
+                <input
+                    type="text"
+                    id="upiId"
+                    placeholder="example@upi"
+                >
+
+            </div>
+
+
+           
+            <div id="cardPayment" class="payment-box hidden">
+
+                <input
+                    type="text"
+                    id="cardNumber"
+                    placeholder="Card Number"
+                    maxlength="16"
+                >
+
+                <div class="card-row">
+
+                    <input
+                        type="text"
+                        placeholder="MM/YY"
+                        maxlength="5"
+                    >
+
+                    <input
+                        type="password"
+                        placeholder="CVV"
+                        maxlength="3"
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div id="cashPayment" class="payment-box hidden">
+
+                <p>
+                    Pay cash when your food is delivered.
+                </p>
+
+            </div>
+
+
+            <button
+                class="place-order"
+                onclick="placeOrder()"
+            >
+                Place Order
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+<div class="success-modal" id="successModal">
+
+    <div class="success-box">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>Order Confirmed!</h2>
+
+        <p id="orderMessage"></p>
+
+        <button onclick="closeSuccess()">
+            Continue Shopping
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<footer>
+
+    <h2>🍴 FoodieHub</h2>
+
+    <p>
+        Delicious food made with love.
+    </p>
+
+    <p>
+        © 2026 FoodieHub. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
