@@ -1,53 +1,330 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>FoodieHub - Restaurant</title>
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FoodieHub - Restaurant Food Booking</title>
 
     <link rel="stylesheet" href="style.css">
+
 </head>
+
+
 <body>
 
 
-<header class="navbar">
+<!-- =====================================================
+     AUTH SECTION
+     ===================================================== -->
 
-    <div class="logo">
-        🍴 FoodieHub
+<section id="authSection" class="auth-page">
+
+    <div class="auth-container">
+
+        <div class="auth-logo">
+            🍴 FoodieHub
+        </div>
+
+
+        <!-- ================= LOGIN ================= -->
+
+        <div id="loginScreen">
+
+            <h1>Welcome Back!</h1>
+
+            <p class="auth-subtitle">
+                Sign in to continue ordering delicious food.
+            </p>
+
+
+            <form id="loginForm">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="auth-btn"
+                >
+                    Sign In
+                </button>
+
+            </form>
+
+
+            <p
+                id="loginMessage"
+                class="auth-message"
+            ></p>
+
+
+            <div class="divider">
+                OR
+            </div>
+
+
+            <button
+                class="google-btn"
+                onclick="demoGoogleLogin()"
+            >
+                🔵 Continue with Google
+            </button>
+
+
+            <p class="switch-auth">
+
+                Don't have an account?
+
+                <a
+                    href="#"
+                    onclick="showSignup(); return false;"
+                >
+                    Create Account
+                </a>
+
+            </p>
+
+        </div>
+
+
+
+        <!-- ================= SIGN UP ================= -->
+
+        <div
+            id="signupScreen"
+            style="display:none;"
+        >
+
+            <h1>Create Account</h1>
+
+            <p class="auth-subtitle">
+                Create your FoodieHub account.
+            </p>
+
+
+            <form id="signupForm">
+
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="signupName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label>Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="signupPhone"
+                    placeholder="Enter phone number"
+                    required
+                >
+
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="signupPassword"
+                    placeholder="Create password"
+                    required
+                >
+
+
+                <label>Confirm Password</label>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="Confirm password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="auth-btn"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <p
+                id="signupMessage"
+                class="auth-message"
+            ></p>
+
+
+            <p class="switch-auth">
+
+                Already have an account?
+
+                <a
+                    href="#"
+                    onclick="showLogin(); return false;"
+                >
+                    Sign In
+                </a>
+
+            </p>
+
+        </div>
+
     </div>
 
+</section>
+
+
+
+<!-- =====================================================
+     MAIN RESTAURANT APPLICATION
+     ===================================================== -->
+
+<div
+    id="mainApp"
+    style="display:none;"
+>
+
+
+<!-- ================= NAVBAR ================= -->
+
+<header class="navbar">
+
+
+    <div class="logo">
+
+        🍴 FoodieHub
+
+    </div>
+
+
     <nav>
-        <a href="#home">Home</a>
-        <a href="#menu">Menu</a>
-        <a href="#booking">Booking</a>
-        <a href="#payment">Payment</a>
+
+        <a href="#home">
+            Home
+        </a>
+
+        <a href="#menu">
+            Menu
+        </a>
+
+        <a href="#booking">
+            Booking
+        </a>
+
+        <a href="#payment">
+            Payment
+        </a>
+
     </nav>
 
-    <button class="cart-btn" onclick="openCart()">
-        🛒 Cart <span id="cartCount">0</span>
-    </button>
+
+    <div>
+
+        <button
+            class="cart-btn"
+            onclick="openCart()"
+        >
+            🛒 Cart
+
+            <span id="cartCount">
+                0
+            </span>
+
+        </button>
+
+
+        <button
+            class="cart-btn"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+
+    </div>
 
 </header>
 
 
 
+<!-- ================= HERO ================= -->
 
-<section class="hero" id="home">
+<section
+    class="hero"
+    id="home"
+>
+
 
     <div class="hero-content">
 
-        <h1>Delicious Food<br>Delivered To You</h1>
+
+        <h1>
+
+            Delicious Food
+            <br>
+            Delivered To You
+
+        </h1>
+
 
         <p>
-            Order your favourite food from our restaurant
-            and enjoy a delicious meal.
+
+            Order your favourite food
+            from our restaurant and enjoy
+            a delicious meal.
+
         </p>
 
-        <button onclick="scrollToMenu()">
+
+        <button
+            onclick="scrollToMenu()"
+        >
+
             Explore Menu
+
         </button>
+
 
     </div>
 
@@ -55,29 +332,63 @@
 
 
 
+<!-- ================= RESTAURANT INFO ================= -->
 
 <section class="restaurant-info">
 
+
     <div>
-        <h2>🍽️ FoodieHub Restaurant</h2>
-        <p>⭐⭐⭐⭐⭐ 4.8 (2,500+ Reviews)</p>
-        <p>📍 Kolkata, West Bengal</p>
+
+        <h2>
+            🍽️ FoodieHub Restaurant
+        </h2>
+
+
+        <p>
+            ⭐⭐⭐⭐⭐ 4.8
+            (2,500+ Reviews)
+        </p>
+
+
+        <p>
+            📍 Kolkata, West Bengal
+        </p>
+
     </div>
 
+
     <div class="restaurant-time">
-        <strong>🟢 Open Now</strong>
-        <p>10:00 AM - 11:00 PM</p>
+
+        <strong>
+            🟢 Open Now
+        </strong>
+
+        <p>
+            10:00 AM - 11:00 PM
+        </p>
+
     </div>
+
 
 </section>
 
 
 
-<section class="menu-section" id="menu">
+<!-- ================= MENU ================= -->
 
-    <h2>Our Menu</h2>
+<section
+    class="menu-section"
+    id="menu"
+>
+
+
+    <h2>
+        Our Menu
+    </h2>
+
 
     <div class="search-box">
+
 
         <input
             type="text"
@@ -86,67 +397,160 @@
             onkeyup="searchFood()"
         >
 
+
     </div>
+
 
 
     <div class="categories">
 
-        <button onclick="filterFood('all')">All</button>
-        <button onclick="filterFood('pizza')">🍕 Pizza</button>
-        <button onclick="filterFood('burger')">🍔 Burger</button>
-        <button onclick="filterFood('biryani')">🍚 Biryani</button>
-        <button onclick="filterFood('chinese')">🥡 Chinese</button>
-        <button onclick="filterFood('dessert')">🍰 Dessert</button>
+
+        <button
+            onclick="filterFood('all')"
+        >
+            All
+        </button>
+
+
+        <button
+            onclick="filterFood('pizza')"
+        >
+            🍕 Pizza
+        </button>
+
+
+        <button
+            onclick="filterFood('burger')"
+        >
+            🍔 Burger
+        </button>
+
+
+        <button
+            onclick="filterFood('biryani')"
+        >
+            🍚 Biryani
+        </button>
+
+
+        <button
+            onclick="filterFood('chinese')"
+        >
+            🥡 Chinese
+        </button>
+
+
+        <button
+            onclick="filterFood('dessert')"
+        >
+            🍰 Dessert
+        </button>
+
 
     </div>
 
 
-    <div class="food-container" id="foodContainer"></div>
+
+    <div
+        class="food-container"
+        id="foodContainer"
+    ></div>
+
 
 </section>
 
 
 
+<!-- =====================================================
+     CART
+     ===================================================== -->
 
-<div class="cart-panel" id="cartPanel">
+<div
+    class="cart-panel"
+    id="cartPanel"
+>
+
 
     <div class="cart-header">
 
-        <h2>Your Cart</h2>
 
-        <button onclick="closeCart()">✕</button>
+        <h2>
+            Your Cart
+        </h2>
+
+
+        <button
+            onclick="closeCart()"
+        >
+            ✕
+        </button>
+
 
     </div>
 
+
+
     <div id="cartItems"></div>
+
+
 
     <div class="cart-summary">
 
+
         <p>
+
             Subtotal:
-            <span>₹<span id="subtotal">0</span></span>
+
+            <span>
+                ₹<span id="subtotal">0</span>
+            </span>
+
         </p>
 
+
         <p>
+
             Delivery:
-            <span>₹<span id="delivery">40</span></span>
+
+            <span>
+                ₹<span id="delivery">40</span>
+            </span>
+
         </p>
 
+
         <p>
+
             GST:
-            <span>₹<span id="gst">0</span></span>
+
+            <span>
+                ₹<span id="gst">0</span>
+            </span>
+
         </p>
+
 
         <hr>
 
+
         <h3>
+
             Total:
-            <span>₹<span id="total">0</span></span>
+
+            <span>
+                ₹<span id="total">0</span>
+            </span>
+
         </h3>
 
-        <button class="checkout-btn" onclick="goToCheckout()">
+
+        <button
+            class="checkout-btn"
+            onclick="goToCheckout()"
+        >
             Proceed to Checkout
         </button>
+
 
     </div>
 
@@ -154,18 +558,34 @@
 
 
 
+<!-- =====================================================
+     BOOKING + CHECKOUT
+     ===================================================== -->
 
-<section class="checkout" id="booking">
+<section
+    class="checkout"
+    id="booking"
+>
 
-    <h2>Booking & Checkout</h2>
+
+    <h2>
+        Booking & Checkout
+    </h2>
+
 
     <div class="checkout-container">
 
-        <!-- CUSTOMER DETAILS -->
+
+
+        <!-- ================= CUSTOMER ================= -->
 
         <div class="checkout-card">
 
-            <h3>Customer Details</h3>
+
+            <h3>
+                Customer Details
+            </h3>
+
 
             <input
                 type="text"
@@ -173,36 +593,53 @@
                 placeholder="Full Name"
             >
 
+
             <input
                 type="tel"
                 id="phone"
                 placeholder="Phone Number"
             >
 
+
             <textarea
                 id="address"
                 placeholder="Delivery Address"
             ></textarea>
 
-            <h3>Booking Type</h3>
+
+
+            <h3>
+                Booking Type
+            </h3>
+
 
             <select id="bookingType">
+
 
                 <option value="delivery">
                     Home Delivery
                 </option>
 
+
                 <option value="pickup">
                     Restaurant Pickup
                 </option>
+
 
                 <option value="dinein">
                     Dine In
                 </option>
 
+
             </select>
 
-            <div id="tableBox" class="hidden">
+
+
+            <div
+                id="tableBox"
+                class="hidden"
+            >
+
 
                 <input
                     type="number"
@@ -211,18 +648,32 @@
                     min="1"
                 >
 
+
             </div>
+
 
         </div>
 
 
-        
 
-        <div class="checkout-card" id="payment">
+        <!-- ================= PAYMENT ================= -->
 
-            <h3>Payment Method</h3>
+        <div
+            class="checkout-card"
+            id="payment"
+        >
+
+
+            <h3>
+                Payment Method
+            </h3>
+
+
+
+            <!-- UPI -->
 
             <label class="payment-option">
+
 
                 <input
                     type="radio"
@@ -231,12 +682,18 @@
                     onchange="showPayment('upi')"
                 >
 
+
                 📱 UPI
+
 
             </label>
 
 
+
+            <!-- CARD -->
+
             <label class="payment-option">
+
 
                 <input
                     type="radio"
@@ -245,12 +702,18 @@
                     onchange="showPayment('card')"
                 >
 
+
                 💳 Credit / Debit Card
+
 
             </label>
 
 
+
+            <!-- CASH -->
+
             <label class="payment-option">
+
 
                 <input
                     type="radio"
@@ -259,14 +722,21 @@
                     onchange="showPayment('cash')"
                 >
 
+
                 💵 Cash on Delivery
+
 
             </label>
 
 
-            
 
-            <div id="upiPayment" class="payment-box hidden">
+            <!-- UPI BOX -->
+
+            <div
+                id="upiPayment"
+                class="payment-box hidden"
+            >
+
 
                 <input
                     type="text"
@@ -274,11 +744,18 @@
                     placeholder="example@upi"
                 >
 
+
             </div>
 
 
-           
-            <div id="cardPayment" class="payment-box hidden">
+
+            <!-- CARD BOX -->
+
+            <div
+                id="cardPayment"
+                class="payment-box hidden"
+            >
+
 
                 <input
                     type="text"
@@ -287,7 +764,9 @@
                     maxlength="16"
                 >
 
+
                 <div class="card-row">
+
 
                     <input
                         type="text"
@@ -295,80 +774,223 @@
                         maxlength="5"
                     >
 
+
                     <input
                         type="password"
                         placeholder="CVV"
                         maxlength="3"
                     >
 
+
                 </div>
 
+
             </div>
 
 
-            <div id="cashPayment" class="payment-box hidden">
+
+            <!-- CASH BOX -->
+
+            <div
+                id="cashPayment"
+                class="payment-box hidden"
+            >
+
 
                 <p>
-                    Pay cash when your food is delivered.
+
+                    Pay cash when your food
+                    is delivered.
+
                 </p>
 
+
             </div>
+
 
 
             <button
                 class="place-order"
                 onclick="placeOrder()"
             >
+
                 Place Order
+
             </button>
+
 
         </div>
 
+
     </div>
+
 
 </section>
 
 
 
+<!-- =====================================================
+     ORDER SUCCESS
+     ===================================================== -->
 
-<div class="success-modal" id="successModal">
+<div
+    class="success-modal"
+    id="successModal"
+>
+
 
     <div class="success-box">
+
 
         <div class="success-icon">
             ✓
         </div>
 
-        <h2>Order Confirmed!</h2>
+
+        <h2>
+            Order Confirmed!
+        </h2>
+
 
         <p id="orderMessage"></p>
 
-        <button onclick="closeSuccess()">
+
+        <button
+            onclick="closeSuccess()"
+        >
+
             Continue Shopping
+
         </button>
 
+
     </div>
+
 
 </div>
 
 
 
+<!-- ================= FOOTER ================= -->
+
 <footer>
 
-    <h2>🍴 FoodieHub</h2>
+
+    <h2>
+        🍴 FoodieHub
+    </h2>
+
 
     <p>
         Delicious food made with love.
     </p>
 
+
     <p>
-        © 2026 FoodieHub. All Rights Reserved.
+        © 2026 FoodieHub.
+        All Rights Reserved.
     </p>
+
 
 </footer>
 
 
+</div>
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
 <script src="script.js"></script>
 
+
+<script>
+
+
+// =====================================================
+// SHOW LOGIN
+// =====================================================
+
+function showLogin() {
+
+    document.getElementById(
+        "loginScreen"
+    ).style.display = "block";
+
+
+    document.getElementById(
+        "signupScreen"
+    ).style.display = "none";
+
+}
+
+
+
+// =====================================================
+// SHOW SIGNUP
+// =====================================================
+
+function showSignup() {
+
+    document.getElementById(
+        "loginScreen"
+    ).style.display = "none";
+
+
+    document.getElementById(
+        "signupScreen"
+    ).style.display = "block";
+
+}
+
+
+
+// =====================================================
+// CHECK LOGIN STATUS
+// =====================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+
+        const loggedIn =
+            localStorage.getItem(
+                "isLoggedIn"
+            );
+
+
+        if (loggedIn === "true") {
+
+            document.getElementById(
+                "authSection"
+            ).style.display = "none";
+
+
+            document.getElementById(
+                "mainApp"
+            ).style.display = "block";
+
+
+        } else {
+
+            document.getElementById(
+                "authSection"
+            ).style.display = "flex";
+
+
+            document.getElementById(
+                "mainApp"
+            ).style.display = "none";
+
+        }
+
+
+    }
+);
+
+</script>
+
+
 </body>
+
 </html>
