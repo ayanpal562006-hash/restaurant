@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FoodieHub - Sign Up</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="auth-page">
+
+    <div class="auth-container">
+
+        <div class="auth-logo">
+            🍴 FoodieHub
+        </div>
+
+        <h1>Create Account</h1>
+
+        <p class="auth-subtitle">
+            Create your FoodieHub account.
+        </p>
+
+        <form id="signupForm">
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="signupName"
+                placeholder="Enter your full name"
+                required
+            >
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="signupEmail"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label>Phone Number</label>
+
+            <input
+                type="tel"
+                id="signupPhone"
+                placeholder="Enter phone number"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="signupPassword"
+                placeholder="Create password"
+                required
+            >
+
+            <label>Confirm Password</label>
+
+            <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm password"
+                required
+            >
+
+            <button type="submit" class="auth-btn">
+                Create Account
+            </button>
+
+        </form>
+
+        <p id="signupMessage" class="auth-message"></p>
+
+        <p class="switch-auth">
+
+            Already have an account?
+
+            <a href="login.html">
+                Sign In
+            </a>
+
+        </p>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
